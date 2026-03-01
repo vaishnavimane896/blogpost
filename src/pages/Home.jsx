@@ -1,45 +1,66 @@
-import React, { useEffect, useState } from 'react'
-import { getDocs,collection, deleteDoc,doc } from 'firebase/firestore';
-import { db } from '../firebase';
+import React, { useEffect, useState } from "react";
+import { getDocs, collection, deleteDoc, doc } from "firebase/firestore";
+import { db, auth } from "../firebase";
 
-const Home = ({isAuth}) => {
-  
-    const [postList,setPostList] = useState([]);
-    const postsCollectionRef = collection (db,"posts")
+const Home = ({ isAuth }) => {
+  const [postList, setPostList] = useState([]);
+  const postsCollectionRef = collection(db, "posts");
 
-    useEffect(() =>{
-      const getPosts = async() =>{
-        const data = await  getDocs(postsCollectionRef)
-        console.log(data.docs.map((doc) =>({...doc.data(),id: doc.id})));
-      }
-      getPosts();
-    })
+  useEffect(() => {
+    const getPosts = async () => {
+      const data = await getDocs(postsCollectionRef);
 
-    const deletepost= async(id)=>{
-      const postDoc = doc(db,"post",id )
-      await deleteDoc(postDoc)
-    }
+      setPostList(
+        data.docs.map((doc) => ({
+          ...doc.data(),
+          id: doc.id,
+        }))
+      );
+    };
 
+    getPosts();
+  }, []); 
 
-  return (  <div className='homepage'>
-    {postList.map((post)=>{
-      return<div className='post'> 
-      <div className='postHead'>
-        <div className='title'><h1>{post.title}</h1>
-        </div> 
-        <div className='deletepost'>
+  const deletePost = async (id) => {
+      await deleteDoc(doc(db, "posts", id));
+      setPostList((prev) => prev.filter((post) => post.id !== id));
+  };
 
-          {isAuth && post.author.id === auth .currentuser.uid &&<button onClick={()=>{deletepost(post.id)}}>&#128465;</button>
+  return (
+    <div className="homepage">
+      {postList.map((post) => {
+  const isOwner =
+    isAuth &&
+    auth.currentUser &&
+    post.author &&
+    post.author.id === auth.currentUser.uid;
+
+  return (
+    <div className="post" key={post.id}>
+      <div className="postHead">
+        <div className="title">
+          <h1>{post.title}</h1>
+        </div>
+
+        <div className="deletepost">
+          {isOwner && (
+            <button onClick={() => deletePost(post.id)}>
+              🗑
+            </button>
+          )}
         </div>
       </div>
-      <div className='postTextContainer'>{post.postText}</div>
-      <h3>@{post.author.name}</h3>
+
+      <div className="postTextContainer">
+        {post.postText}
       </div>
-      
-    })}
 
+      <h3>@{post.author?.name || "Unknown User"}</h3>
     </div>
-  )
-}
+  );
+})}
+    </div>
+  );
+};
 
-export default Home
+export default Home;
