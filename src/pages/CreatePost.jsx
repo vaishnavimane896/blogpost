@@ -20,14 +20,11 @@ navigate("/")
 
 }
 
-
-useEffect(() =>{
+useEffect(() => {
   if (!isAuth) {
-    navigate("/login")
-
+    navigate("/login");
   }
-
-},[])
+}, [isAuth, navigate]); 
 
 
   return (
