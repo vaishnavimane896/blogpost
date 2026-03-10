@@ -1,42 +1,46 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+/* Remove default link styling */
+a {
+  text-decoration: none;
+  color: inherit;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Navbar */
+nav {
+  width: 100%;
+  padding: 15px 40px;
+  background-color: #1f2937;
+  display: flex;
+  align-items: center;
+  justify-content: center;   /* 🔥 Center everything */
+  gap: 30px;                 /* Space between items */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+/* Links */
+nav a {
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 500;
+  transition: 0.3s ease;
 }
 
-.card {
-  padding: 2em;
+nav a:hover {
+  color: #60a5fa;
 }
 
-.read-the-docs {
-  color: #888;
+/* Logout Button */
+nav button {
+  padding: 6px 14px;
+  border-radius: 6px;
+  border: none;
+  background-color: #ef4444;
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+nav button:hover {
+  background-color: #dc2626;
+  transform: scale(1.05);
 }

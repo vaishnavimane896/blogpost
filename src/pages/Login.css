@@ -1,0 +1,49 @@
+/* Full page background */
+.loginpage {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #4facfe, #00f2fe);
+}
+
+/* Login card */
+.loginpage {
+  flex-direction: column;
+  text-align: center;
+}
+
+/* Text */
+.loginpage p {
+  font-size: 22px;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 20px;
+  letter-spacing: 0.5px;
+}
+
+/* Button styling */
+.loginpage button {
+  padding: 10px 25px;
+  font-size: 15px;
+  font-weight: 600;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  background-color: #ffffff;
+  color: #333;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Hover effect */
+.loginpage button:hover {
+  background-color: #f1f1f1;
+  transform: translateY(-2px);
+}
+
+/* Click effect */
+.loginpage button:active {
+  transform: translateY(0);
+}

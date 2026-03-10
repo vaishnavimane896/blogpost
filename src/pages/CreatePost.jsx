@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { addDoc, collection } from 'firebase/firestore'
 import { db ,auth} from '../firebase'
 import { useNavigate } from 'react-router-dom'
+ import "./Createpost.css";
 
 const CreatePost = ({isAuth}) => {
 

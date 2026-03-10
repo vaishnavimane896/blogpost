@@ -5,16 +5,24 @@ import Login from "./pages/Login";
 import CreatePost from "./pages/CreatePost";
 import { signOut } from "firebase/auth";
 import { auth } from "./firebase";
+import "./App.css";
+
+
+            
 
 const App = () => {
   const [isAuth, setIsAuth] = useState(
+      
     localStorage.getItem("isAuth") === "true"
+
   );
 
   const navigate = useNavigate();
 
   const signUserOut = async () => {
+
     try {
+      
       await signOut(auth);
       localStorage.clear();
       setIsAuth(false);
@@ -29,9 +37,11 @@ const App = () => {
       <nav>
         <Link to="/">Home</Link>
 
-        {!isAuth ? (
-          <Link to="/login">Login</Link>
+         {!isAuth ? (
+          <Link to="/login">Login </Link>
+
         ) : (
+
           <>
             <Link to="/createpost">Create Post</Link>
             <button onClick={signUserOut}>Log Out</button>

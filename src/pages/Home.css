@@ -1,0 +1,77 @@
+/* Page background */
+.homepage {
+  width: 100%;
+  min-height: 100vh;
+  padding: 40px 20px;
+  background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Single post card */
+.post {
+  width: 100%;
+  max-width: 650px;
+  background: #ffffff;
+  margin-bottom: 25px;
+  padding: 20px 25px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  transition: 0.3s ease;
+}
+
+/* Hover effect */
+.post:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
+}
+
+/* Post header */
+.postHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+/* Title */
+.title h1 {
+  font-size: 22px;
+  margin: 0;
+  color: #333;
+  word-break: break-word;
+}
+
+/* Delete button container */
+.deletepost button {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+/* Delete hover effect */
+.deletepost button:hover {
+  transform: scale(1.2);
+  color: #e63946;
+}
+
+/* Post content */
+.postTextContainer {
+  font-size: 15px;
+  color: #555;
+  margin-bottom: 15px;
+  line-height: 1.6;
+  word-break: break-word;
+}
+
+/* Author name */
+.post h3 {
+  font-size: 14px;
+  font-weight: 600;
+  color: #667eea;
+  margin: 0;
+  text-align: right;
+}
